@@ -7,7 +7,7 @@ import machine
 SSID = "APKel4"
 PASSWORD = "aboutyou"
 UBIDOTS_TOKEN = "BBUS-V2fREN0LZcJDUBCbZ2UXtDnbImhS3D"
-DEVICE_LABEL = "demo-machine"  # Ubidots lebih suka lowercase tanpa spasi
+DEVICE_LABEL = "demo-machine"  
 
 # 🔹 Variabel di Ubidots
 VARIABLE_LABEL_PIR = "pir"
@@ -60,7 +60,6 @@ def send_to_ubidots(pir_val, ldr_val, temp_val):
         "Content-Type": "application/json"
     }
 
-    # Pastikan data dalam format yang benar
     data = {
         VARIABLE_LABEL_PIR: {"value": int(pir_val)}, 
         VARIABLE_LABEL_LDR: {"value": int(ldr_val)}, 
