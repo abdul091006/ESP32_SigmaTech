@@ -44,7 +44,7 @@ def read_sensors():
     pir_value = pir.value()
     ldr_value = ldr.read()  # Nilai ADC 0-4095
 
-    # 🔥 Perbaikan: Konversi nilai suhu lebih akurat
+    # Konversi nilai suhu lebih akurat
     temp_raw = temp_sensor.read()  # Nilai ADC mentah
     voltage = temp_raw * 3.3 / 4095  # Konversi ke voltase
     temp_value = round(voltage * 100, 2)  # LM35: 10mV per 1°C → dikali 100
@@ -60,11 +60,11 @@ def send_to_ubidots(pir_val, ldr_val, temp_val):
         "Content-Type": "application/json"
     }
 
-    # 🔥 Perbaikan: Pastikan data dalam format yang benar
+    # Pastikan data dalam format yang benar
     data = {
-        VARIABLE_LABEL_PIR: {"value": int(pir_val)},  # Pastikan integer
-        VARIABLE_LABEL_LDR: {"value": int(ldr_val)},  # Pastikan integer
-        VARIABLE_LABEL_TEMP: {"value": temp_val}  # Float dengan 2 desimal
+        VARIABLE_LABEL_PIR: {"value": int(pir_val)}, 
+        VARIABLE_LABEL_LDR: {"value": int(ldr_val)}, 
+        VARIABLE_LABEL_TEMP: {"value": temp_val} 
     }
 
     try:
